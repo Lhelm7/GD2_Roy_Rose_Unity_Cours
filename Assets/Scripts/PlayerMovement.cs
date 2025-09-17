@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float _verticalMovement;
     private Vector3 _movement;
     [SerializeField]  private float _speed = 2f;
+    [SerializeField] private float _highJump;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -31,5 +32,14 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogError("No RigidBody Attached !");
         }
+
+        
+            //Jump
+            bool saut = Input.GetButtonDown("Jump");
+            if (saut)
+                {
+                _rb.AddForce(Vector3.up*_highJump,ForceMode.VelocityChange);
+                }
+        
     }
 }
