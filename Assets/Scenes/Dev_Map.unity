@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 82927671}
   - component: {fileID: 82927670}
   - component: {fileID: 82927669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,8 +1186,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175c70a7ee4bef748b0d551211fdc802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
-  _highJump: 10.03
+  speed: 10
+  highJump: 6
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!54 &1935944092
 Rigidbody:
   m_ObjectHideFlags: 0

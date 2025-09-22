@@ -7,8 +7,9 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontalMovement;
     private float _verticalMovement;
     private Vector3 _movement;
-    [SerializeField]  private float _speed = 2f;
-    [SerializeField] private float _highJump;
+    [SerializeField]  private float speed = 2f;
+    [SerializeField] private float highJump;
+    public LayerMask layerMask;  
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         _verticalMovement = Input.GetAxis("Vertical");
         _movement = new Vector3(_horizontalMovement, 0f, _verticalMovement);
         _movement.Normalize();
-        _movement *= _speed;
+        _movement *= speed;
         _movement.y = _rb.linearVelocity.y;
         if ( _rb != null)
         {
@@ -36,9 +37,9 @@ public class PlayerMovement : MonoBehaviour
         
             //Jump
             bool saut = Input.GetButtonDown("Jump");
-            if (saut)
+            if (saut && Physics.Raycast(transform.position,Vector3.down,0.8f,layerMask))
                 {
-                _rb.AddForce(Vector3.up*_highJump,ForceMode.VelocityChange);
+                _rb.AddForce(Vector3.up * highJump,ForceMode.Impulse);
                 }
         
     }
