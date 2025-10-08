@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject player;
 
     void Update()
     {
-        transform.position = _player.transform.position;
+        transform.position = player.transform.position;
     }
 
 }
