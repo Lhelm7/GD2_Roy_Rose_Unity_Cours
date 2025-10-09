@@ -18,7 +18,7 @@ public class TargetSoft : MonoBehaviour
          ToggleVisibility(false);
          //TODO : Start Timer
          //_isInShadows = true;
-         Instantiate(_particuleEffect.transform);
+         Instantiate(_particuleEffect,transform.position,Quaternion.identity);
          StartCoroutine(shadowtimerControl());
 
       }
