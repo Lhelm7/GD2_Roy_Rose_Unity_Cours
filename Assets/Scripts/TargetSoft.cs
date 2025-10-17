@@ -20,12 +20,8 @@ public class TargetSoft : MonoBehaviour
          //_isInShadows = true;
          Instantiate(_particuleEffect,transform.position,Quaternion.identity);
          StartCoroutine(shadowtimerControl());
-
       }
    }
-   
-    
-      
    //TODO : Timer by delta time
    private void ToggleVisibility(bool newVisibility)
    {
@@ -47,7 +43,6 @@ public class TargetSoft : MonoBehaviour
          }
       }
    }*/
-
    private IEnumerator shadowtimerControl()
    {
       yield return new WaitForSeconds(_shadowDuration);
