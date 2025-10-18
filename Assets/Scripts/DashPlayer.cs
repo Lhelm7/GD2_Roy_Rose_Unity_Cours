@@ -4,16 +4,15 @@ using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
 
 public class DashPlayer : MonoBehaviour
-{
-    public float dashSpeed = 20f; // vitesse du dash
-    //public float dashTime = 0.2f;      // durée du dash
-    //public float dashCooldown = 1f;    
-
+    {
+          [Header("Paramètres du Dash")]
+    public float dashSpeed = 20f;
+    public float maxDashDuration = 5f; // Durée max d'utilisation après avoir ramassé un collectible
     [SerializeField] private Image _DashBar;
-    private bool _hasDash = false;
-    private bool _canDash = false;
-    private float _DashDuration;
-    private float _remainingDashTime;
+
+    private bool _canDash = false;     // Si le joueur a le droit de dasher (après collectible)
+    private bool _isDashing = false;   // Si le joueur dash actuellement
+    private float _remainingDashTime;  // Temps restant d'utilisation du pouvoir
     private Rigidbody _rb;
     private Transform _cameraTransform;
 
@@ -27,59 +26,59 @@ public class DashPlayer : MonoBehaviour
 
     void Update()
     {
-        // On calcule la direction selon les touches et la caméra
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
         Vector3 dir = (_cameraTransform.forward * v + _cameraTransform.right * h);
         dir.y = 0;
         dir.Normalize();
 
-        // Quand on appuie sur Shift et qu’on peut dash
-        if (_hasDash && Input.GetKey(KeyCode.LeftShift) && !_canDash && dir.magnitude > 0)
+        // Si on a le pouvoir du dash
+        if (_canDash)
         {
-            StartCoroutine(Dash(dir));
+            // Si le joueur maintient Shift
+            if (Input.GetKey(KeyCode.LeftShift) && _remainingDashTime > 0f)
+            {
+                _isDashing = true;
+                _remainingDashTime -= Time.deltaTime; // Le temps diminue
+
+                if (_DashBar != null)
+                    _DashBar.fillAmount = _remainingDashTime / maxDashDuration;
+
+                // Déplacement rapide
+                _rb.MovePosition(_rb.position + dir * dashSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // Si le joueur relâche la touche ou que le temps est écoulé
+                if (_isDashing)
+                {
+                    _isDashing = false;
+                    _rb.linearVelocity = Vector3.zero;
+                }
+
+                // Si le temps est fini → le pouvoir disparaît
+                if (_remainingDashTime <= 0f)
+                {
+                    _canDash = false;
+                    if (_DashBar != null)
+                        _DashBar.fillAmount = 0f;
+                }
+            }
         }
     }
 
-    IEnumerator Dash(Vector3 dir)
-    {
-        _canDash = false;
-
-        float startTime = Time.time;
-
-        // Pendant la durée du dash → on pousse légèrement à chaque frame
-        while (Time.time < startTime + _DashDuration)
-        {
-            _rb.linearVelocity = dir * dashSpeed;
-            yield return null; // attend la frame suivante
-        }
-
-        // On arrête le mouvement du dash
-        _rb.linearVelocity = Vector3.zero;
-
-        _remainingDashTime = 1 - ((Time.time - startTime) / _remainingDashTime);
-        if (_DashBar != null)
-            _DashBar.fillAmount = _remainingDashTime;
-
-        yield return null;
-
-        if (_DashBar != null)
-        {
-            _DashBar.fillAmount = 0f;
-
-            _canDash = false;
-            _hasDash = false;
-        }
-    }
-
+    // Appelée quand on ramasse un collectible
     public void ActivateBoost(float duration)
-        {
-            _DashDuration = duration;
-            _hasDash = true;
-            if (_DashBar != null)
-                _DashBar.fillAmount = 1f;
-        }
+    {
+        maxDashDuration = duration;
+        _remainingDashTime = duration;
+        _canDash = true;
+
+        if (_DashBar != null)
+            _DashBar.fillAmount = 1f;
     }
+}
 
 
     
