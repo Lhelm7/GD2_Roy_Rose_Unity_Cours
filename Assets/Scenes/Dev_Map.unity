@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashSpeed: 40
   maxDashDuration: 5
-  _DashBar: {fileID: 0}
+  _DashBar: {fileID: 1819865129}
 --- !u!1 &1249517140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1760,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1df1b58a74b07e948b8174a831d939d5, type: 3}
+--- !u!114 &1819865129 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7853817369914806002, guid: b57337c2a429fe142a4fc29f517464f8, type: 3}
+  m_PrefabInstance: {fileID: 2917618435539187709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1843797106
 GameObject:
   m_ObjectHideFlags: 0
@@ -2029,6 +2040,20 @@ PrefabInstance:
     - target: {fileID: 1080655201963219753, guid: b57337c2a429fe142a4fc29f517464f8, type: 3}
       propertyPath: m_Name
       value: ===HUD===
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527906995602711234, guid: b57337c2a429fe142a4fc29f517464f8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267291406535966371, guid: b57337c2a429fe142a4fc29f517464f8, type: 3}
+      propertyPath: m_text
+      value: '
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267291406535966371, guid: b57337c2a429fe142a4fc29f517464f8, type: 3}
+      propertyPath: m_margin.y
+      value: 2.1392899
       objectReference: {fileID: 0}
     - target: {fileID: 7853817369914806002, guid: b57337c2a429fe142a4fc29f517464f8, type: 3}
       propertyPath: m_Sprite

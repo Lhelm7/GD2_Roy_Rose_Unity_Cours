@@ -4,7 +4,7 @@ using UnityEngine;
 public class WallFolder : MonoBehaviour
 {
     [SerializeField] private GameObject _wallPrefab;
-    [SerializeField]  private Transform[] _spawnPoints;
+    [SerializeField] private Transform[] _spawnPoints;
     private int _spawnPointIndex = 0;
     private void OnEnable()
     {

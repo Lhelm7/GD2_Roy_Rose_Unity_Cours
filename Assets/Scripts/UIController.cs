@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
     }
     public void UpdateScore(int newScore)
     {
-        _scoreText.text = "Score : " + newScore.ToString();
+        _scoreText.text = " " + newScore.ToString();
         //_scoreText.text = $"Score : {newScore.ToString()}";
 
     }
