@@ -8,18 +8,11 @@ public class DeadZone : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerCollect>() != null)
         {
-            gameOverUI.SetActive(true); 
+            other.transform.position = respawnPoint.position; 
+            //gameOverUI.SetActive(true); 
         } 
     } 
-    public void Retry(GameObject player) 
-
-    { 
-
-        player.transform.position = respawnPoint.position; 
-        player.transform.rotation = respawnPoint.rotation; 
-        player.SetActive(true); 
-        gameOverUI.SetActive(false); 
-
+  
     } 
-} 
+
 
