@@ -8,6 +8,7 @@ public class DashPlayer : MonoBehaviour
     [Header("Paramètres du Dash")]
     public float dashSpeed = 20f;
     public float maxDashDuration = 5f; // Durée totale du pouvoir (après 1er dash)
+    [SerializeField] private Image _DashIcon;
     [SerializeField] private Image _DashBar;
 
     private bool _canDash = false;     // Si le joueur a débloqué le dash (collectible)
@@ -24,6 +25,9 @@ public class DashPlayer : MonoBehaviour
 
         if (_DashBar != null)
             _DashBar.fillAmount = 0f;
+        
+        if (_DashIcon != null)
+            _DashIcon.enabled = false; 
     }
 
     void Update()
@@ -77,6 +81,9 @@ public class DashPlayer : MonoBehaviour
 
                     if (_DashBar != null)
                         _DashBar.fillAmount = 0f;
+                    
+                    if (_DashIcon != null)
+                        _DashIcon.enabled = false; //
                 }
             }
         }
@@ -92,6 +99,9 @@ public class DashPlayer : MonoBehaviour
 
         if (_DashBar != null)
             _DashBar.fillAmount = 1f;
+        
+        if (_DashIcon != null)
+            _DashIcon.enabled = true;
     }
 }
 

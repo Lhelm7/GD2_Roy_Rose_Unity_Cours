@@ -14,14 +14,8 @@ public class PlayerCollect : MonoBehaviour
         _uiController.UpdateScore(_scoreData.ScoreValue);
         OnTargetCollected?.Invoke(_scoreData.ScoreValue);
     }
-    void Start()
+    public int GetScore()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return _scoreData.ScoreValue;
     }
 }
