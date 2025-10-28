@@ -5,15 +5,26 @@ public class TargetHard : MonoBehaviour
 {
     [SerializeField] private int _targetValue = 1;
     private CollectibleRespawn _respawn;
+
+    private void Awake()
+    {
+        _respawn = GetComponent<CollectibleRespawn>();
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.GetComponent<PlayerCollect>() != null)
         {
             other.gameObject.GetComponent<PlayerCollect>().UpdateScore(_targetValue);
+
             if (_respawn != null)
+            {
                 _respawn.Collect();
+            }
             else
-            Destroy(gameObject);
+            {
+                Destroy(gameObject);
+            }
         }
     }
-} 
+}

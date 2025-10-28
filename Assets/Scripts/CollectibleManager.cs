@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class CollectibleManager : MonoBehaviour
 {
+    [SerializeField] private ScoreDatas _scoreData;
+    [SerializeField] private int _victoryScore;
+    [SerializeField] private GameObject _victoryUI;
+
     public static CollectibleManager Instance { get; private set; }
 
     private List<CollectibleRespawn> _collectibles = new List<CollectibleRespawn>();
@@ -15,6 +19,7 @@ public class CollectibleManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
     }
 

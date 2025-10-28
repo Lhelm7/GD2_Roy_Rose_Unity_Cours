@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4784249918537186319}
   - component: {fileID: 4483768581558693633}
   - component: {fileID: 4349516956731686112}
+  - component: {fileID: 9100506222631724346}
   m_Layer: 0
   m_Name: HardCube
   m_TagString: Untagged
@@ -150,3 +151,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9100506222631724346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006972879213556900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0342e4b0b7e934cb389cc1caa7e943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
