@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _movement;
     [SerializeField]  private float speed = 2f;
     [SerializeField] private float highJump;
+    [SerializeField] private AudioSource _jumpSound;
     public LayerMask layerMask;  
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        
         
     }
 
@@ -40,7 +40,10 @@ public class PlayerMovement : MonoBehaviour
             if (saut && Physics.Raycast(transform.position,Vector3.down,0.8f,layerMask))
                 {
                 _rb.AddForce(Vector3.up * highJump,ForceMode.Impulse);
+                if (_jumpSound != null)
+                    _jumpSound.Play();
                 }
+                
         
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Level1Victory : MonoBehaviour
 {
     private string _MainMenu = "MainMenuScene";
-    private string _Level2 = "Level2Scene";
+    private string _Level2 = "MapLevel2";
     [SerializeField] private ScoreDatas _scoreData;
     [SerializeField] private GameObject _victoryUI;
     [SerializeField] private int _victoryScore;
@@ -26,6 +26,8 @@ public class Level1Victory : MonoBehaviour
 
     public void Next()
     {
+        if (_scoreData != null)
+            _scoreData.ScoreValue = 0;
         SceneManager.LoadScene(_Level2);
     }
 }

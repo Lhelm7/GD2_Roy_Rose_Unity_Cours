@@ -5,16 +5,17 @@ using Image = UnityEngine.UI.Image;
 
 public class DashPlayer : MonoBehaviour
     {
-    [Header("Paramètres du Dash")]
     public float dashSpeed = 20f;
-    public float maxDashDuration = 5f; // Durée totale du pouvoir (après 1er dash)
+    public float maxDashDuration = 5f; 
     [SerializeField] private Image _DashIcon;
     [SerializeField] private Image _DashBar;
+    [SerializeField] private AudioSource _DashSound;
+    [SerializeField] private AudioSource _DashSoundActivated;
 
-    private bool _canDash = false;     // Si le joueur a débloqué le dash (collectible)
-    private bool _isDashing = false;   // Si le joueur dash actuellement
-    private bool _dashTimerStarted = false; // Si le chrono global a démarré
-    private float _remainingDashTime;  // Temps restant du pouvoir
+    private bool _canDash = false;     
+    private bool _isDashing = false;   
+    private bool _dashTimerStarted = false; 
+    private float _remainingDashTime;  
     private Rigidbody _rb;
     private Transform _cameraTransform;
 
@@ -28,6 +29,7 @@ public class DashPlayer : MonoBehaviour
         
         if (_DashIcon != null)
             _DashIcon.enabled = false; 
+        
     }
 
     void Update()
@@ -44,9 +46,13 @@ public class DashPlayer : MonoBehaviour
         {
             // Si on appuie sur Shift pour la première fois → démarrer le chrono global
             if (Input.GetKeyDown(KeyCode.LeftShift) && !_dashTimerStarted)
+                
             {
                 _dashTimerStarted = true;
                 _remainingDashTime = maxDashDuration;
+                
+                if (_DashSoundActivated != null && !_DashSoundActivated.isPlaying)
+                    _DashSoundActivated.Play();
             }
 
             // Si le chrono global est en cours
@@ -71,6 +77,8 @@ public class DashPlayer : MonoBehaviour
                         _isDashing = false;
                         _rb.linearVelocity = Vector3.zero;
                     }
+                    if (_DashSoundActivated != null && _DashSoundActivated.isPlaying)
+                        _DashSoundActivated.Stop();
                 }
 
                 // Si le temps est écoulé → désactiver le dash
@@ -83,7 +91,10 @@ public class DashPlayer : MonoBehaviour
                         _DashBar.fillAmount = 0f;
                     
                     if (_DashIcon != null)
-                        _DashIcon.enabled = false; //
+                        _DashIcon.enabled = false; 
+                    
+                    if (_DashSoundActivated != null && _DashSoundActivated.isPlaying)
+                        _DashSoundActivated.Stop();
                 }
             }
         }
@@ -92,11 +103,15 @@ public class DashPlayer : MonoBehaviour
     // Appelée quand le joueur ramasse un collectible
     public void ActivateBoost(float duration)
     {
+        
         maxDashDuration = duration;
         _canDash = true;
         _dashTimerStarted = false; // le chrono ne démarre pas encore
         _isDashing = false;
 
+        if (_DashSound != null)
+            _DashSound.Play();
+        
         if (_DashBar != null)
             _DashBar.fillAmount = 1f;
         

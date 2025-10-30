@@ -6,6 +6,8 @@ public class DeadZone : MonoBehaviour
     [SerializeField] private GameObject gameOverUI; 
     [SerializeField] private ScoreDatas _scoreData;
     [SerializeField] private UIController _uiController;
+    [SerializeField] private AudioSource _SoundOfDeath;
+    [SerializeField] private AudioSource _GameOverSound;
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<PlayerCollect>() != null)
@@ -18,12 +20,17 @@ public class DeadZone : MonoBehaviour
             
             if (CollectibleManager.Instance != null)
                 CollectibleManager.Instance.RespawnOneCollectible();
-
+            
+            if (_SoundOfDeath != null)
+                _SoundOfDeath.Play();
            
             if (_scoreData.ScoreValue <= 0)
             {
                 if (gameOverUI != null)
                     gameOverUI.SetActive(true);
+                
+                if (_GameOverSound != null)
+                    _GameOverSound.Play();
             }
         }
     }
