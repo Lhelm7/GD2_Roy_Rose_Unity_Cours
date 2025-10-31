@@ -29,9 +29,7 @@ public class DashPlayer : MonoBehaviour
         
         if (_DashIcon != null)
             _DashIcon.enabled = false; 
-        
     }
-
     void Update()
     {
         float h = Input.GetAxisRaw("Horizontal");
@@ -40,11 +38,9 @@ public class DashPlayer : MonoBehaviour
         Vector3 dir = (_cameraTransform.forward * v + _cameraTransform.right * h);
         dir.y = 0;
         dir.Normalize();
-
-        // Si on a le pouvoir du dash
+        
         if (_canDash)
         {
-            // Si on appuie sur Shift pour la première fois → démarrer le chrono global
             if (Input.GetKeyDown(KeyCode.LeftShift) && !_dashTimerStarted)
                 
             {
@@ -54,16 +50,14 @@ public class DashPlayer : MonoBehaviour
                 if (_DashSoundActivated != null && !_DashSoundActivated.isPlaying)
                     _DashSoundActivated.Play();
             }
-
-            // Si le chrono global est en cours
+            
             if (_dashTimerStarted)
             {
                 _remainingDashTime -= Time.deltaTime;
 
                 if (_DashBar != null)
                     _DashBar.fillAmount = _remainingDashTime / maxDashDuration;
-
-                // Si le joueur maintient Shift → dash actif
+                
                 if (Input.GetKey(KeyCode.LeftShift) && _remainingDashTime > 0f)
                 {
                     _isDashing = true;
@@ -71,7 +65,6 @@ public class DashPlayer : MonoBehaviour
                 }
                 else
                 {
-                    // Si le joueur relâche Shift
                     if (_isDashing)
                     {
                         _isDashing = false;
@@ -81,7 +74,7 @@ public class DashPlayer : MonoBehaviour
                         _DashSoundActivated.Stop();
                 }
 
-                // Si le temps est écoulé → désactiver le dash
+                
                 if (_remainingDashTime <= 0f)
                 {
                     _canDash = false;
@@ -99,14 +92,13 @@ public class DashPlayer : MonoBehaviour
             }
         }
     }
-
-    // Appelée quand le joueur ramasse un collectible
+    
     public void ActivateBoost(float duration)
     {
         
         maxDashDuration = duration;
         _canDash = true;
-        _dashTimerStarted = false; // le chrono ne démarre pas encore
+        _dashTimerStarted = false; 
         _isDashing = false;
 
         if (_DashSound != null)
