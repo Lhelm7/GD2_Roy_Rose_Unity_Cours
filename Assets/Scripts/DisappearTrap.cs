@@ -1,40 +1,44 @@
+using System.Collections;
 using UnityEngine;
 
 public class DisappearTrap : MonoBehaviour
 {
-    public float visibleTime = 3f;
-    public float invisibleTime = 2f;
+    [SerializeField] private float _visibleTime = 3f;
+    [SerializeField] private float _invisibleTime = 2f;
+    [SerializeField] private GameObject _disappearEffect;
 
-    private Renderer rend;
-    private Collider col;
-    private bool isVisible = true;
-    private float timer;
+    private bool _isVisible = true;
+    private Renderer _renderer;
+    private Collider _collider;
 
-    void Start()
+    private void Start()
     {
-        rend = GetComponent<Renderer>();
-        col = GetComponent<Collider>();
-        timer = visibleTime;
+        _renderer = GetComponent<Renderer>();
+        _collider = GetComponent<Collider>();
+        StartCoroutine(VisibilityCycle());
     }
 
-    void Update()
+    private IEnumerator VisibilityCycle()
     {
-        timer -= Time.deltaTime;
+        while (true)
+        {
+            // Visible phase
+            ToggleVisibility(true);
+            if (_disappearEffect != null)
+                Instantiate(_disappearEffect, transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(_visibleTime);
 
-        if (isVisible && timer <= 0)
-        {
-            rend.enabled = false;
-            col.enabled = false;
-            isVisible = false;
-            timer = invisibleTime;
+            // Invisible phase
+            ToggleVisibility(false);
+            yield return new WaitForSeconds(_invisibleTime);
         }
-        else if (!isVisible && timer <= 0)
-        {
-            rend.enabled = true;
-            col.enabled = true;
-            isVisible = true;
-            timer = visibleTime;
-        }
+    }
+
+    private void ToggleVisibility(bool newVisibility)
+    {
+        _isVisible = newVisibility;
+        _renderer.enabled = newVisibility;
+        _collider.enabled = newVisibility;
     }
 }
 

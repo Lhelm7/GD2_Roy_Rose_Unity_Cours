@@ -13,11 +13,11 @@ public class TargetSoft : MonoBehaviour
       if (other.gameObject.GetComponent<PlayerCollect>() != null)
       {
          other.gameObject.GetComponent<PlayerCollect>().UpdateScore(_targetValue);
-         //Destroy(gameObject);
+        
          //TODO : Hide Target
          ToggleVisibility(false);
          //TODO : Start Timer
-         //_isInShadows = true;
+       
          Instantiate(_particuleEffect,transform.position,Quaternion.identity);
          StartCoroutine(shadowtimerControl());
       }
