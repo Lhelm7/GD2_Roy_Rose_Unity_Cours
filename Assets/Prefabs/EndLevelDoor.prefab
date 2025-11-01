@@ -123,6 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreData: {fileID: 11400000, guid: 807791bf1408d284dbbf28a66505399f, type: 2}
+  _ScoreToOpen: 0
+  _TextDoor: {fileID: 0}
+  _OpenDoor: {fileID: 8300000, guid: e188a545ef262a14c9d1c27f3d484d26, type: 3}
 --- !u!65 &4175334422734137777
 BoxCollider:
   m_ObjectHideFlags: 0
