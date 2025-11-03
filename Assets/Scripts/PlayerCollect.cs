@@ -12,7 +12,7 @@ public class PlayerCollect : MonoBehaviour
     {
         _scoreData.ScoreValue = Mathf.Clamp(_scoreData.ScoreValue+value,min:0,max:_scoreData.ScoreValue+value); 
         _uiController.UpdateScore(_scoreData.ScoreValue);
-        OnTargetCollected?.Invoke(_scoreData.ScoreValue);
+        OnTargetCollected?.Invoke(_scoreData.ScoreValue); 
     }
     public int GetScore()
     {
