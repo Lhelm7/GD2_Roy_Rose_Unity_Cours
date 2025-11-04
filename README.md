@@ -152,7 +152,7 @@ Objectif : faire une zone en hauteur (une plateforme) ou quand le joueur arrive 
 
 Dans l’idée que j’ai ce serait reprendre le system du jump, et du dash en faisant en sorte d’ajouter une force sur le rigidbody du joueur pour qu’il soit vraiment propulser en arrière et donc de préciser également la direction (forward) 
 
-Réalisation : après de nombreuse itération, le premier système a fonctionné, (inspiration code du saut) application d’une force pour propulser le joueur (vector.3up) seulement en revanche je ne sais pas pourquoi je n’ai pas réussi à faire la même chose mais à le propulser en arrière. Et après d’autres test c’est comme si le joueur rebondissait sur la paroi de la boxe était bloqué.  
+Réalisation : après de nombreuse itération, le premier système a fonctionné, (inspiration code du saut) application d’une force pour propulser le joueur (vector.3up) seulement en revanche je ne sais pas pourquoi je n’ai pas réussi à faire la même chose mais à le propulser en arrière. Et après d’autres test c’est comme si le joueur rebondissait sur la paroi de la boxe était bloqué. Ainsi à la place j'ai fait un système de téléportation ou quand le joueur, à fait toute une partie/enchainement de plateforme et revenir en arrière serait épuisant, un point de tp à été mis à la dernière plateforme le ramenant avant tous cet enchainement de plateforme pour qu'il n'ai pas à refaire tous le chemin.
 
 
 Settings 
