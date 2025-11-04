@@ -3318,6 +3318,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5515661328326324752, guid: 1df1b58a74b07e948b8174a831d939d5, type: 3}
   m_PrefabInstance: {fileID: 1519017297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &571367792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571367793}
+  - component: {fileID: 571367795}
+  - component: {fileID: 571367794}
+  m_Layer: 0
+  m_Name: RespawnDashCollectible (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571367793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571367792}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 55.758324, y: -15.663605, z: 60.258095}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1025447362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &571367794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571367792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cb181a520029c4f90a4843aec5bd73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectiblePrefab: {fileID: 5544567394168233580, guid: ae12783ed43026f45a78bddd98db031e, type: 3}
+  respawnDelay: 10
+--- !u!65 &571367795
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571367792}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.51, y: 4, z: 4.74}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &572910519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2204284225554519851, guid: 1a22e6c64589bd84294e9d60f629bf88, type: 3}
@@ -6679,6 +6747,7 @@ Transform:
   - {fileID: 1615601940}
   - {fileID: 1669136833}
   - {fileID: 357225982}
+  - {fileID: 571367793}
   m_Father: {fileID: 1153496715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1027598170
