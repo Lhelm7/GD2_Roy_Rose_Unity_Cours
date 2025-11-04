@@ -15,19 +15,18 @@ public class EndLevelDoor : MonoBehaviour
     {
       if (_scoreData != null && _scoreData.ScoreValue == _ScoreToOpen)
 
-    { 
-      if (_OpenDoor != null)
-        AudioSource.PlayClipAtPoint(_OpenDoor, transform.position);
-      Destroy(gameObject);
-        }
-        else
-        {
-          if (_TextDoor != null)
-            _TextDoor.SetActive(true);
-        }
-      
+      {
+        if (_OpenDoor != null)
+          AudioSource.PlayClipAtPoint(_OpenDoor, transform.position);
+        Destroy(gameObject);
+      }
+      else
+      {
+        if (_TextDoor != null)
+          _TextDoor.SetActive(true);
+      }
     }
-    }
+  }
 
   private void OnTriggerExit(Collider other)
     {

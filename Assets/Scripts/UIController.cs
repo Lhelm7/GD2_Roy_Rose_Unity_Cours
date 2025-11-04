@@ -10,13 +10,10 @@ public class UIController : MonoBehaviour
     {
         PlayerCollect.OnTargetCollected += UpdateScore;
     }
-
     private void OnDisable()
     {
         PlayerCollect.OnTargetCollected -= UpdateScore;
     }
-
-
     private void Star()
     {
         UpdateScore(0);
@@ -27,6 +24,5 @@ public class UIController : MonoBehaviour
         //_scoreText.text = $"Score : {newScore.ToString()}";
 
     }
-
 }
 

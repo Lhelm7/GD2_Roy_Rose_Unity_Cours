@@ -22,19 +22,17 @@ public class DisappearTrap : MonoBehaviour
     {
         while (true)
         {
-            // Visible phase
             ToggleVisibility(true);
             if (_disappearEffect != null)
                 Instantiate(_disappearEffect, transform.position, Quaternion.identity);
             yield return new WaitForSeconds(_visibleTime);
 
-            // Invisible phase
             ToggleVisibility(false);
             yield return new WaitForSeconds(_invisibleTime);
         }
     }
 
-    private void ToggleVisibility(bool newVisibility)
+private void ToggleVisibility(bool newVisibility)
     {
         _isVisible = newVisibility;
         _renderer.enabled = newVisibility;

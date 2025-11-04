@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("No RigidBody Attached !");
         }
 
-        //Saut
+        //Code du Saut
             bool saut = Input.GetButtonDown("Jump");
             if (saut && Physics.Raycast(transform.position,Vector3.down,0.8f,layerMask))
                 {

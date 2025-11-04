@@ -4,16 +4,23 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     private string _Level1Scene = "Dev_Map";
-    
-    public void Play()
+    [SerializeField] private AudioSource music;
+
+    private void Awake()
     {
-        SceneManager.LoadScene(_Level1Scene);
+        DontDestroyOnLoad(gameObject);
+    }
+    public void Play()
+        {
+            if (music != null && !music.isPlaying)
+                music.Play();
+            SceneManager.LoadScene(_Level1Scene);
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
     }
 
-    public void Quit()
-        {
-            Debug.Log("Quit"); 
-            Application.Quit();
-    }
-}
 
