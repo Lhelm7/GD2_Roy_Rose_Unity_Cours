@@ -119,6 +119,7 @@ Le joueur meurt quand il tombe dans la dead zone, et il perd quand il tombe dans
 J'ai fait notamment plusieurs pièges ou plateforme pouvant faire perdre le joueur. 
 
 Réalisation : Ainsi j’ai fait plusieurs pièges mais le plus marquant est la trap qui disparait avec le temps, que j’ai fait précédemment. Mais ainsi si le joueur tombe dû à ces trappes, il va alors traverser la dead zone, ce qui aura pour conséquence de le faire respawn à un point de spawn (transform) établis au début du niveau. Et également il va perdre un collectible énergie, (son score se réinitialisera dans l'UI) le dernier qu’il a ramassé, et ce collectible réapparaitra dans le monde ainsi il aura littéralement perdu son collectible et devra retourner le chercher dans le niveau. 
+(Pour ca j'ai notamment fait un script "manager" et un autre respawn afin de faire réaparaitre le dernier collectible ramassé. Mais j'aborderai plus en détails cela dans l'explication du code)
 
 
 Ajout mouvement 
